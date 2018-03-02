@@ -1,7 +1,3 @@
-# DiplomadoiOS
-Diplomado iOS Dev Lab 2018.
-
-
 ## Error que salía:
 *** Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[<prueba.ViewController 0x7f9bf0f064e0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key outletText.'***	
 
