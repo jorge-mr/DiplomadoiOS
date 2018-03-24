@@ -13,6 +13,7 @@
 		93BB77EA205D6D060061C903 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BB77E8205D6D060061C903 /* Main.storyboard */; };
 		93BB77EC205D6D060061C903 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BB77EB205D6D060061C903 /* Assets.xcassets */; };
 		93BB77EF205D6D060061C903 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BB77ED205D6D060061C903 /* LaunchScreen.storyboard */; };
+		93BB77F7205D6DD00061C903 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BB77F6205D6DD00061C903 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		93BB77EB205D6D060061C903 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93BB77EE205D6D060061C903 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93BB77F0205D6D060061C903 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BB77F6205D6DD00061C903 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				93BB77E2205D6D060061C903 /* AppDelegate.swift */,
 				93BB77E4205D6D060061C903 /* MasterViewController.swift */,
+				93BB77F6205D6DD00061C903 /* File.swift */,
 				93BB77E6205D6D060061C903 /* DetailViewController.swift */,
 				93BB77E8205D6D060061C903 /* Main.storyboard */,
 				93BB77EB205D6D060061C903 /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BB77E7205D6D060061C903 /* DetailViewController.swift in Sources */,
+				93BB77F7205D6DD00061C903 /* File.swift in Sources */,
 				93BB77E5205D6D060061C903 /* MasterViewController.swift in Sources */,
 				93BB77E3205D6D060061C903 /* AppDelegate.swift in Sources */,
 			);
