@@ -76,6 +76,45 @@ class ViewController: UIViewController {
         }
     }
     
+//    func loginUser(){
+//        if let email = emailTextField.text, let password = passwordTextField.text {
+//            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+//                if let error = error?.localizedDescription {
+//                    print("🌪",error)
+//                } else {
+//                    print("🌟 usuario autenticado",user)
+//                    let userController = UserViewController()
+//                    self.navigationController?.pushViewController(userController, animated: true)
+//                }
+//            }
+//        } else {
+//            print("Introduce los datos completos")
+//        }
+//    }
+//
+//    func registerUser(){
+//        if let email = emailTextField.text, let password = passwordTextField.text {
+//            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+//                if let error = error?.localizedDescription {
+//                    print("🌪",error)
+//                } else {
+//                    print("🌟 usuario creado",user)
+//                    let values = ["name" : email]
+//                    self.ref.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
+//                        if error != nil {
+//                            print(error?.localizedDescription ?? "errorr")
+//                        }else{
+//                            print("dato guardado en la base de firebase")
+//                            print(databaseRef.description())
+//                        }
+//                    })
+//                }
+//            }
+//        } else {
+//            print("Introduce los datos completos")
+//        }
+//    }
+    
     func loginUser(){
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
@@ -100,11 +139,18 @@ class ViewController: UIViewController {
                 } else {
                     print("🌟 usuario creado",user)
                     let values = ["name" : email]
-                    self.ref.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
+                    guard let uid = user?.uid else {
+                        return
+                    }
+                    let userReference = self.ref.child("users").child(uid)
+                    
+                    userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
                         if error != nil {
                             print(error?.localizedDescription ?? "errorr")
-                        }else{
+                        } else {
                             print("dato guardado en la base de firebase")
+                            let userController = UserViewController()
+                            self.navigationController?.pushViewController(userController, animated: true)
                             print(databaseRef.description())
                         }
                     })
@@ -114,7 +160,6 @@ class ViewController: UIViewController {
             print("Introduce los datos completos")
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
