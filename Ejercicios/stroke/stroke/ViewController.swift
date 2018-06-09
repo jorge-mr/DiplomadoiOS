@@ -36,14 +36,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var delta : CGFloat = 15.0
     let shapeLayer = CAShapeLayer()
+    let startLayer = CAShapeLayer()
+    let endLayer = CAShapeLayer()
+    var startPoint : CGPoint!
+    var endPoint : CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shapeLayer.strokeColor = UIColor.blue.cgColor
+        let backColor =  #colorLiteral(red: 0.5921568627, green: 0.9843137255, blue: 0.8156862745, alpha: 1)
+        shapeLayer.strokeColor = backColor.cgColor
+        startLayer.strokeColor = backColor.cgColor
+        endLayer.strokeColor = backColor.cgColor
         shapeLayer.lineWidth = 10.0
+        shapeLayer.actions = ["lineWidth":NSNull(), "position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()]
+        startLayer.actions = ["lineWidth":NSNull(), "position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()]
+        endLayer.actions = ["lineWidth":NSNull(), "position" : NSNull(), "bounds" : NSNull(), "path" : NSNull()]
         view.layer.addSublayer(shapeLayer)
+        view.layer.addSublayer(startLayer)
+        view.layer.addSublayer(endLayer)
         drawBezier()
         
     }
@@ -60,21 +71,37 @@ class ViewController: UIViewController {
         let x = width / 2 - 80
         let y = height / 2
         let long : CGFloat = 16
-        let p1 = CGPoint(x: x, y: y)
+        startPoint = CGPoint(x: x, y: y)
         let p2 = CGPoint(x: x + 3*long , y: y + -3*long)
         let p3 = CGPoint(x: x + 6 * long, y: y)
         let p4 = CGPoint(x: x + 9 * long , y: y + 3*long)
-        let p5 = CGPoint(x: x + 12 * long , y: y - long)
-        bezier.move(to: p1)
-        bezier.addCurve(to: p3, controlPoint1: p1, controlPoint2: p2)
-        bezier.addCurve(to: p5, controlPoint1: p3, controlPoint2: p4)
+        endPoint = CGPoint(x: x + 12 * long , y: y - long)
+        bezier.move(to: startPoint)
+        bezier.addCurve(to: p3, controlPoint1: startPoint, controlPoint2: p2)
+        bezier.addCurve(to: endPoint, controlPoint1: p3, controlPoint2: p4)
         shapeLayer.path = bezier.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
     }
+    
+    func drawRight(thickness : CGFloat){
+        let bezier = UIBezierPath()
+        bezier.move(to: endPoint)
+        let p1 = CGPoint(x: endPoint.x - thickness, y: endPoint.y - thickness)
+        let p2 = CGPoint(x: endPoint.x + thickness, y: endPoint.y - thickness)
+        let p3 = CGPoint(x: endPoint.x + thickness, y: endPoint.y + thickness)
+        bezier.addLine(to: p1)
+        bezier.addLine(to: p2)
+        bezier.addLine(to: p3)
+        bezier.close()
+        endLayer.path = bezier.cgPath
+        endLayer.fillColor = #colorLiteral(red: 0.5921568627, green: 0.9843137255, blue: 0.8156862745, alpha: 1).cgColor
+            }
 
     @IBAction func didMoveSlider(_ sender: UISlider) {
-        shapeLayer.lineWidth = CGFloat(sender.value)
+        let thickness = CGFloat(sender.value)
+        shapeLayer.lineWidth = thickness
         drawBezier()
+        drawRight(thickness: thickness)
     }
     
 }
