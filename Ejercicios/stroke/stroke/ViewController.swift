@@ -8,6 +8,32 @@
 
 import UIKit
 
+//class SineView: UIView{
+//    let graphWidth: CGFloat = 1  // Graph is 80% of the width of the view
+//    let amplitude: CGFloat = 0.3   // Amplitude of sine wave is 30% of view height
+//
+//    override func draw(_ rect: CGRect) {
+//        //let width = rect.width
+//        let width : CGFloat = 200.0
+//        let height = rect.height
+//
+//        let origin = CGPoint(x: width * (1 - graphWidth) / 2, y: height * 0.50)
+//
+//        let path = UIBezierPath()
+//        path.move(to: origin)
+//
+//        for angle in stride(from: 15.0, through: 360.0, by: 5.0) {
+//            let x = origin.x + CGFloat(angle/360.0) * width * graphWidth
+//            let y = origin.y - CGFloat(sin(angle/180.0 * Double.pi)) * height * amplitude
+//            path.addLine(to: CGPoint(x: x, y: y))
+//        }
+//
+//        //UIColor.black.setStroke()
+//        path.lineWidth = 25.0
+//        path.stroke()
+//    }
+//}
+
 class ViewController: UIViewController {
     
     var delta : CGFloat = 15.0
@@ -15,7 +41,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.lineWidth = 10.0
         view.layer.addSublayer(shapeLayer)
+        drawBezier()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,61 +53,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func hypotenuse(_ a: CGFloat) -> CGFloat {
-        return (a * a + a * a).squareRoot()
-    }
-    
     func drawBezier(){
         let bezier = UIBezierPath()
-        let width = view.frame.width
+        let width = view.frame.width - 100
         let height = view.frame.height
         let x = width / 2 - 80
         let y = height / 2
-        
-        let long : CGFloat = 50
-//        let p1 = CGPoint(x: x - delta, y: y - delta)
-//        let p2 = CGPoint(x: x - delta, y: y - long - delta)
-//        let p3 = CGPoint(x: x + long - delta, y: y - long - delta)
-//        let p4 = CGPoint(x: x + 2 * long - delta, y: y - long - delta)
-//        let p5 = CGPoint(x: x + 2 * long - delta, y: y - 2 * long - delta)
-//        let p6 = CGPoint(x: x + 2 * long + delta, y: y - 2 * long + delta)
-//        let p7 = CGPoint(x: x + 2 * long + delta, y: y - long + delta)
-//        let p8 = CGPoint(x: x + long + delta, y: y - long + delta)
-//        let p9 = CGPoint(x: x + delta , y: y - long + delta)
-//        let p10 = CGPoint(x: x + delta , y: y + delta)
-        let p1 = CGPoint(x: x - delta, y: y - delta)
-        let p2 = CGPoint(x: x + long , y: y - long - hypotenuse(delta))
-        let p3 = CGPoint(x: x + 2 * long + delta, y: y - delta)
-        let p4 = CGPoint(x: x + 3 * long , y: y + long - hypotenuse(delta))
-        let p5 = CGPoint(x: x + 4 * long - delta , y: y - delta)
-        let p6 = CGPoint(x: x + 4 * long + delta, y: y + delta)
-        let p7 = CGPoint(x: x + 3 * long , y: y + long + hypotenuse(delta))
-        let p8 = CGPoint(x: x + 2 * long - delta, y: y + delta)
-        let p9 = CGPoint(x: x + long , y: y - long + hypotenuse(delta))
-        let p10 = CGPoint(x: x + delta , y: y + delta)
-        
-        
-        // https://mathematica.stackexchange.com/questions/28202/vary-the-thickness-of-a-plotted-function
+        let long : CGFloat = 16
+        let p1 = CGPoint(x: x, y: y)
+        let p2 = CGPoint(x: x + 3*long , y: y + -3*long)
+        let p3 = CGPoint(x: x + 6 * long, y: y)
+        let p4 = CGPoint(x: x + 9 * long , y: y + 3*long)
+        let p5 = CGPoint(x: x + 12 * long , y: y - long)
         bezier.move(to: p1)
-        // bezier.addLine(to: CGPoint(x: width, y: height))
-//        bezier.addQuadCurve(to: p3, controlPoint: p2)
-//        bezier.addQuadCurve(to: <#T##CGPoint#>, controlPoint: <#T##CGPoint#>)
-        
-        
-//        ///
         bezier.addCurve(to: p3, controlPoint1: p1, controlPoint2: p2)
         bezier.addCurve(to: p5, controlPoint1: p3, controlPoint2: p4)
-        bezier.addLine(to: p6)
-        bezier.addCurve(to: p8, controlPoint1: p6, controlPoint2: p7)
-        bezier.addCurve(to: p10, controlPoint1: p8, controlPoint2: p9)
-        bezier.addLine(to: p1)
-        bezier.close()
         shapeLayer.path = bezier.cgPath
-        shapeLayer.fillColor = UIColor.blue.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
     }
 
     @IBAction func didMoveSlider(_ sender: UISlider) {
-        delta = CGFloat(sender.value)
+        shapeLayer.lineWidth = CGFloat(sender.value)
         drawBezier()
     }
     

@@ -24,19 +24,10 @@
                                     <action selector="didMoveSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="n6n-3S-swD"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JM-bk-6l9">
-                                <rect key="frame" x="164" y="520" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="03J-Sp-9iI" kind="presentation" id="79G-Kw-2k8"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GhX-2x-FiA" secondAttribute="trailing" constant="43" id="5RH-PD-Hba"/>
-                            <constraint firstItem="GhX-2x-FiA" firstAttribute="top" secondItem="5JM-bk-6l9" secondAttribute="bottom" constant="20" id="7rn-Z4-LYm"/>
-                            <constraint firstItem="5JM-bk-6l9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BfJ-SX-FJg"/>
                             <constraint firstItem="GhX-2x-FiA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="43" id="f4O-jT-CZz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GhX-2x-FiA" secondAttribute="bottom" constant="67" id="gSL-AY-kpx"/>
                         </constraints>
@@ -46,28 +37,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Tul-SN-Js8">
-            <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="03J-Sp-9iI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nQN-E4-6dE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7z-rD-1hb">
-                                <rect key="frame" x="42" y="227" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50847906750000005" green="0.78620336889999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Z38-6s-AZA"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xXx-lp-l7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="956" y="156"/>
         </scene>
     </scenes>
 </document>
