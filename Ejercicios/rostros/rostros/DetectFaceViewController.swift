@@ -42,6 +42,14 @@ class DetectFaceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let letNetPlaces = GoogLeNetPlaces()
+        var test : VNRequest!
+        if let model = try? VNCoreMLModel(for: letNetPlaces.model) {
+            let mlRequest = VNCoreMLRequest(model: model, completionHandler: handleClassification)
+            test = mlRequest
+        }
+        
         guard let ciImage = selectedImage.cgImage else { return }
         let orientation = CGImagePropertyOrientation(rawValue: UInt32(selectedImage.imageOrientation.rawValue))
         let faceRequest = VNDetectFaceRectanglesRequest(completionHandler: handleFaces)
@@ -49,6 +57,7 @@ class DetectFaceViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             do {
                 try handler.perform([faceRequest])
+                try handler.perform([test])
             }catch {
                 print("error al manejar la peticion",error)
             }
@@ -95,6 +104,21 @@ class DetectFaceViewController: UIViewController {
             resultsLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             resultsLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30)
         ])
+    }
+    
+    func handleClassification(request: VNRequest, error: Error?){
+        guard let observations = request.results as? [VNClassificationObservation] else {
+            print("unexpected result type from VNCoreMLRequest")
+            return
+        }
+        guard let bestResult = observations.first else {
+            print("Did not a valid classification")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            print("Scene:",bestResult.identifier,bestResult.confidence,"%")
+        }
     }
     
 }
