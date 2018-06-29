@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93745F1D20E5F07900611204 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93745F1F20E5F07900611204 /* Localizable.strings */; };
 		938E0AB22052403C000232AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E0AB12052403C000232AF /* AppDelegate.swift */; };
 		938E0AB42052403C000232AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E0AB32052403C000232AF /* ViewController.swift */; };
 		938E0AB72052403C000232AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 938E0AB52052403C000232AF /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93745F1E20E5F07900611204 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		93745F2020E5F07D00611204 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		938E0AAE2052403C000232AF /* WorldTrotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldTrotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		938E0AB12052403C000232AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		938E0AB32052403C000232AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,8 @@
 		938E0ABD2052403C000232AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93FBB88120E5BF3B0064FEA7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		93FBB88420E5C16F0064FEA7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		93FBB88720E5E8240064FEA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		93FBB88820E5E8B60064FEA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 				938E0AB32052403C000232AF /* ViewController.swift */,
 				938E0AB52052403C000232AF /* Main.storyboard */,
 				93FBB88120E5BF3B0064FEA7 /* MapViewController.swift */,
+				93745F1F20E5F07900611204 /* Localizable.strings */,
 				938E0AB82052403C000232AF /* Assets.xcassets */,
 				938E0ABA2052403C000232AF /* LaunchScreen.storyboard */,
 				938E0ABD2052403C000232AF /* Info.plist */,
@@ -139,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				938E0ABC2052403C000232AF /* LaunchScreen.storyboard in Resources */,
+				93745F1D20E5F07900611204 /* Localizable.strings in Resources */,
 				938E0AB92052403C000232AF /* Assets.xcassets in Resources */,
 				938E0AB72052403C000232AF /* Main.storyboard in Resources */,
 			);
@@ -160,10 +167,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		93745F1F20E5F07900611204 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93745F1E20E5F07900611204 /* es */,
+				93745F2020E5F07D00611204 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		938E0AB52052403C000232AF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				938E0AB62052403C000232AF /* Base */,
+				93FBB88720E5E8240064FEA7 /* en */,
+				93FBB88820E5E8B60064FEA7 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -183,6 +201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -240,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
